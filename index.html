@@ -17,16 +17,57 @@
                     align-items: center;
                 }
                 .profile img{
-                    border-radius: 50%;
-                    width 
-
+                    /*border-radius: 60%;*/
+                    width: 120px;
+                    margin-right: 20px;
+                }
+                table{
+                    border-collapse: collapse;
+                    width: 400px;
+                }
+                table, td, th{
+                    border:1px solid #bbb;
+                }
+                td, th{
+                    padding: 10px;
+                    text-align: center;
+                }
+                form{
+                    margin-top: 30px;
+                }
+                input, textarea{
+                    width: 300px;
+                    padding: 8px;
+                    margin: 8px 0;
                 }
             </style>
     </head>
     <body>
-        <h1>안녕하세요, 나는 홍길동입니다.</h1>
-        <img src="김상호반명함(120x160).jpg" alt="내 사진"  width="120"><br><br>
-
+        <h1>안녕하세요, 저는 김상호입니다.</h1>
+        <div class="profile">
+            <img src="김상호반명함(120x160).jpg" alt="내 사진">
+            <p>백엔드 개발자를 꿈꾸는 사람입니다.<br>
+            Java와 Python을 주로 다루고 있습니다.</p>
+        </div>
+        <hr>
+        <h2>관심 기술 스택</h2>
+        <ul>
+            <li>C/C++/C#</li>
+            <li>Java/Spring Boot</li>
+            <li>MySQL</li>
+            <li>Python</li>
+            <li>HTML/CSS/Javascript</li>
+            <li>Android</li>
+        </ul>
+        <h2>학력</h2>
+        <table>
+            <tr><th>고등학교</th><th>계열</th></tr>
+            <tr><td>백양고등학교</td><td>인문계(이과)</td></tr>
+        </table>
+        <table>
+            <tr><th>대학교</th><th>전공</th></tr>
+            <tr><td>서울과학기술대학교</td><td>전자IT미디어공학과</td></tr>
+        </table>
         <p><strong>나이: </strong>30살</p>
         <p><strong>주소: </strong>서울</p>
         <p><strong>하는 일: </strong>직장인</p>
