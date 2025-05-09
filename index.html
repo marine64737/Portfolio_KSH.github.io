@@ -1,89 +1,119 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-            <meta charset="UTF-8">
-            <title>김상호 Portfolio</title>
-            <style>
-                body {
-                    font-family: Arial, Helvetica, sans-serif;
-                    margin: 40px;
-                    background-color: #f8f9fa;
-                }
-                h1, h2 {
-                    color: #333;
-                }
-                .profile{
-                    display: flex;
-                    align-items: center;
-                }
-                .profile img{
-                    /*border-radius: 60%;*/
-                    width: 120px;
-                    margin-right: 20px;
-                }
-                table{
-                    border-collapse: collapse;
-                    width: 400px;
-                }
-                table, td, th{
-                    border:1px solid #bbb;
-                }
-                td, th{
-                    padding: 10px;
-                    text-align: center;
-                }
-                form{
-                    margin-top: 30px;
-                }
-                input, textarea{
-                    width: 300px;
-                    padding: 8px;
-                    margin: 8px 0;
-                }
-            </style>
-    </head>
-    <body>
-        <h1>안녕하세요, 저는 김상호입니다.</h1>
-        <div class="profile">
-            <img src="김상호반명함(120x160).jpg" alt="내 사진">
-            <p>백엔드 개발자를 꿈꾸는 사람입니다.<br>
-            Java와 Python을 주로 다루고 있습니다.</p>
-        </div>
-        <hr>
-        <h2>관심 기술 스택</h2>
-        <ul>
-            <li>C/C++/C#</li>
-            <li>Java/Spring Boot</li>
-            <li>MySQL</li>
-            <li>Python</li>
-            <li>HTML/CSS/Javascript</li>
-            <li>Android</li>
-        </ul>
-        <h2>학력</h2>
-        <table>
-            <tr><th>고등학교</th><th>계열</th></tr>
-            <tr><td>백양고등학교</td><td>인문계(이과)</td></tr>
-        </table>
-        <table>
-            <tr><th>대학교</th><th>전공</th></tr>
-            <tr><td>서울과학기술대학교</td><td>전자IT미디어공학과</td></tr>
-        </table>
-        <p><strong>나이: </strong>30살</p>
-        <p><strong>주소: </strong>서울</p>
-        <p><strong>하는 일: </strong>직장인</p>
-    <hr>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        nav { background-color: #04fff2; font-weight: bold; padding: 10px; text-align: left; margin-bottom: 40px;}
+        nav a { color: black; margin: 0 15px; text-decoration: none; font-size: 18px; padding: 10px;}
+        nav a:hover {  background-color: #ffcc00; padding: 10px;}
+        h1, h2 {
+            color: #333;
+        }
+        .profile{
+            display: flex;
+            align-items: center;
+        }
+        .profile img{
+            /*border-radius: 60%;*/
+            width: 120px;
+            margin-right: 20px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 400px;
+        }
+        table, td, th{
+            border:1px solid #bbb;
+        }
+        td, th{
+            padding: 10px;
+            text-align: center;
+        }
+        form{
+            margin-top: 30px;
+        }
+        input, textarea{
+            width: 300px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 메뉴 -->
+    <nav>
+        <a href="#" onclick="showContent('home')">인적사항</a>
+        <a href="#" onclick="showContent('about')">학력사항</a>
+        <a href="#" onclick="showContent('contact')">병역사항</a>
+    </nav>
 
-    <h2> 🎯 나의 관심사</h2>
-    <u1>
-        <li>프로그래밍</li>
-        <li>산책</li>
-        <li>책 읽기</li>
-    </u1>
+    <!-- 콘텐츠 영역 -->
+    <div id="content">
+        <h2>메뉴를 클릭하세요!</h2>
+    </div>
 
-    <h2>연락처</h2>
-    <p>이메일 1: <a href="tkdgh01248@naver.com">tkdgh01248@naver.com</a></p>
-    <p>이메일 2: <a href="marine64737@gmail.com">marine64737@gmail.com</a></p>
+    <!-- JavaScript -->
+    <script>
+        function showContent(page) {
+            let content = document.getElementById("content");
+            if (page === "home") {
+                content.innerHTML = `
+                    <div class="profile">
+                        <img src="./김상호반명함(120x160).jpg" alt="내 사진">
+                    </div>
+                    <h1>이름</h1>
+                    <table border="1">
+                        <tr><th>한글</th><th>영어</th><th>한문</th></tr>
+                        <tr><td>김상호</td><td>Kim Sangho</td><td>金相澔</td></tr>
+                    </table>
+                    <hr>
+                    <h2>관심 기술 스택</h2>
+                    <ul>
+                        <li>C/C++/C#</li>
+                        <li>Java/Spring Boot</li>
+                        <li>MySQL</li>
+                        <li>Python</li>
+                        <li>HTML/CSS/Javascript</li>
+                        <li>Android</li>
+                    </ul>
+                    <h2>학력</h2>
+                    <table border="1">
+                        <tr><th>고등학교</th><th>계열</th></tr>
+                        <tr><td>백양고등학교</td><td>인문계(이과)</td></tr>
+                        <tr><th>대학교</th><th>전공</th></tr>
+                        <tr><td>서울과학기술대학교</td><td>전자IT미디어공학과</td></tr>
+                    </table>
+                    <p><strong>나이: </strong>30살</p>
+                    <p><strong>주소: </strong>서울</p>
+                    <p><strong>하는 일: </strong>직장인</p>
+                    <hr>
+                    <h2>🎯 나의 관심사</h2>
+                    <ul>
+                        <li>프로그래밍</li>
+                        <li>산책</li>
+                        <li>책 읽기</li>
+                    </ul>
+                    <h2>연락처</h2>
+                    <p>이메일 1: <a href="mailto:tkdgh01248@naver.com">tkdgh01248@naver.com</a></p>
+                    <p>이메일 2: <a href="mailto:marine64737@gmail.com">marine64737@gmail.com</a></p>
+                `;
+            } else if (page === "about") {
+                content.innerHTML = `
+                    <h2>About Us</h2>
+                    <p>We are a passionate team dedicated to web development.</p>
+                `;
+            } else if (page === "contact") {
+                content.innerHTML = `
+                    <h2>Contact Us</h2>
+                    <p>You can reach us at contact@example.com.</p>
+                `;
+            }
+        }
 
+        // 페이지 로딩 시 기본 콘텐츠 표시
+        window.onload = () => showContent('home');
+    </script>
 </body>
-
 </html>
