@@ -5,9 +5,11 @@
             <title>김상호 Portfolio</title>
             <style>
                 body {
-                    font-family: Arial, Helvetica, sans-serif;
-                    margin: 40px;
-                    background-color: #f8f9fa;
+                    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+                    nav { padding: 10px; text-align: left; }
+                    nav a { color: black; margin: 0 15px; text-decoration: none; font-size: 18px; padding: 10px;}
+                    nav a:hover {  background-color: #ffcc00; padding: 10px;}
+                    #content { padding: 20px; text-align: center; }
                 }
                 h1, h2 {
                     color: #333;
@@ -43,7 +45,17 @@
             </style>
     </head>
     <body>
-        <h1>안녕하세요, 저는 김상호입니다.</h1>
+        <nav>
+        <a href="#" onclick="showContent('home')">인적사항</a>
+        <a href="#" onclick="showContent('about')">학력사항</a>
+        <a href="#" onclick="showContent('contact')">병역사항</a>
+        </nav>
+        <script>
+        // 클릭 시 콘텐츠 변경 함수
+        function showContent(page) {
+            let content = document.getElementById("content");
+            if (page === "home") {
+                content.innerHTML = '<h1>안녕하세요, 저는 김상호입니다.</h1>
         <div class="profile">
             <img src="김상호반명함(120x160).jpg" alt="내 사진">
             <p>백엔드 개발자를 꿈꾸는 사람입니다.<br>
@@ -82,7 +94,15 @@
 
     <h2>연락처</h2>
     <p>이메일 1: <a href="tkdgh01248@naver.com">tkdgh01248@naver.com</a></p>
-    <p>이메일 2: <a href="marine64737@gmail.com">marine64737@gmail.com</a></p>
+    <p>이메일 2: <a href="marine64737@gmail.com">marine64737@gmail.com</a></p>'";
+            } else if (page === "about") {
+                content.innerHTML = "<h2>About Us</h2><p>We are a passionate team dedicated to web development.</p>";
+            } else if (page === "contact") {
+                content.innerHTML = "<h2>Contact Us</h2><p>You can reach us at contact@example.com.</p>";
+            }
+        }
+        </script>
+        
 
 </body>
 
