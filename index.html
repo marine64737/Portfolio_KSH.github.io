@@ -43,9 +43,9 @@
 <body>
     <!-- 메뉴 -->
     <nav>
-        <a href="#" onclick="showContent('home')">인적사항</a>
-        <a href="#" onclick="showContent('about')">학력사항</a>
-        <a href="#" onclick="showContent('contact')">병역사항</a>
+        <a href="#" onclick="showContent('info')">인적사항</a>
+        <a href="#" onclick="showContent('stack')">기술스택</a>
+        <a href="#" onclick="showContent('contact')">미정</a>
     </nav>
 
     <!-- 콘텐츠 영역 -->
@@ -57,7 +57,7 @@
     <script>
         function showContent(page) {
             let content = document.getElementById("content");
-            if (page === "home") {
+            if (page === "info") {
                 content.innerHTML = `
                     <h1>인적사항</h1>
                     <div class="profile">
@@ -74,7 +74,7 @@
                         <tr><th>생년월일</th><th>만 나이</th></tr>
                         <tr><td>1994.06.19</td><td id="age"></td></tr>
                     </table>
-                    <h2>학력</h2>
+                    <h2>학력사항</h2>
                     <table border="1">
                         <tr><th>고등학교</th><th>계열</th><th>입학일</th><th>졸업일</th></tr>
                         <tr><td>백양고등학교</td><td>인문계(이과)</td><td>2010.03.02</td><td>2013.02.07</td></tr>
@@ -83,7 +83,40 @@
                     </table>
                     <p><a href="https://www.gov.kr/mw/EgovPageLink.do?link=minwon/AA040_std_form">고등학교 졸업증명서 출력</a></p>
                     <p><a href="https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=13410000020">대학교 졸업증명서 출력</a></p>
+                    <h2>병역사항</h2>
+                    <table border="1">
+                        <tr><th>군별</th><th>병과</th><th>계급</th><th>복무기간</th><th>제대구분</th></tr>
+                        <tr><td>공군</td><td>항공기무기정비</td><td>병장</td><td>2015.08.17~2017.08.16</td><td>만기제대</td></tr>
+                    </table>
+                    <h2>어학성적</h2>
+                    <table border="1">
+                        <tr><th>언어</th><th>시험명</th><th>점수</th><th>수험번호</th><th>인정번호</th><th>시험일</th><th>자격증취득일</th></tr>
+                        <tr><td>영어</td><td>OPIc</td><td>IM2</td><td>2C8453125332</td><td>-</td><td>2023.09.16(토)</td><td>-</td></tr>
+                        <tr><td>영어</td><td>OPIc</td><td>IL</td><td>2C2651105531</td><td>-</td><td>2025.02.22(토)</td><td>-</td></tr>
+                        <tr><td>일본어</td><td>JLPT</td><td>N2</td><td>24B1011402-20265</td><td>N2A781270A</td><td>2024.12.01(일)</td><td>2025.01.10(금)</td></tr>
+                    </table>
+                    <h2>교육사항</h2>
+                    <table border="1">
+                        <tr><th>교육명</th><th>교육기관</th><th>교육기간</th></tr>
+                        <tr><td>IoT 융합 SW개발(IoT기반 스마트팩토리 SW개발 전문가 과정)</td><td>대한상공회의소 서울기술교육센터</td><td>2021.03.23~2021.08.04 5개월(700시간)</td></tr>
+                    </table>
+                    <a href="https://www.kccistc.net/education/professionalSkillEduDetail.do?rootMenuId=3916&menuId=3922&gaebalwon_cd=09000&gwajeong_no=M2102001">과정 바로가기</a>
+                    <h2>경력사항</h2>
+                    <table border="1">
+                        <tr><th>고용형태</th><th>회사명</th><th>근무기간</th></tr>
+                        <tr><td>정규직</td><td>YC((주)와이씨), 구 YIKC</td><td>2021.11.01~(재직 중)</td></tr>
+                        <tr><th>부서</th><th>담당업무</th><th>퇴직사유</th></tr>
+                        <tr><td>HW그룹 ALPG</td><td>FPGA설계</td><td>직무전환</td></tr>
+                    </table><br>
                     <hr>
+                    
+                    <h2>연락처</h2>
+                    <p>이메일 1: <a href="mailto:tkdgh01248@naver.com">tkdgh01248@naver.com</a></p>
+                    <p>이메일 2: <a href="mailto:marine64737@gmail.com">marine64737@gmail.com</a></p>
+                `;
+            } else if (page === "stack") {
+                content.innerHTML = `
+                    <h1>기술 스택</h1>
                     <h2>관심 기술 스택</h2>
                     <ul>
                         <li>C/C++/C#</li>
@@ -99,14 +132,6 @@
                         <li>산책</li>
                         <li>책 읽기</li>
                     </ul>
-                    <h2>연락처</h2>
-                    <p>이메일 1: <a href="mailto:tkdgh01248@naver.com">tkdgh01248@naver.com</a></p>
-                    <p>이메일 2: <a href="mailto:marine64737@gmail.com">marine64737@gmail.com</a></p>
-                `;
-            } else if (page === "about") {
-                content.innerHTML = `
-                    <h2>About Us</h2>
-                    <p>We are a passionate team dedicated to web development.</p>
                 `;
             } else if (page === "contact") {
                 content.innerHTML = `
@@ -125,7 +150,7 @@
         // 페이지 로딩 시 기본 콘텐츠 표시
         window.onload = function()
         {
-            showContent('home');
+            showContent('info');
             document.getElementById("age").textContent = getAge();
         };
     </script>
