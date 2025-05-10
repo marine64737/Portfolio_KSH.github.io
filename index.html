@@ -22,7 +22,6 @@
         }
         table{
             border-collapse: collapse;
-            width: 400px;
         }
         table, td, th{
             border:1px solid #bbb;
@@ -60,15 +59,30 @@
             let content = document.getElementById("content");
             if (page === "home") {
                 content.innerHTML = `
+                    <h1>인적사항</h1>
                     <div class="profile">
                         <img src="김상호반명함.jpg" alt="내 사진">
                     </div>
                     <a href="김상호반명함(120x160).jpg" download>명함(120x160) 다운로드</a>
-                    <h1>이름</h1>
+                    <h2>이름</h2>
                     <table border="1">
                         <tr><th>한글</th><th>영어</th><th>한문</th></tr>
                         <tr><td>김상호</td><td>Kim Sangho</td><td>金相澔</td></tr>
                     </table>
+                    <h2>생년월일</h2>
+                    <table border="1">
+                        <tr><th>생년월일</th><th>만 나이</th></tr>
+                        <tr><td>1994.06.19</td><td id="age"></td></tr>
+                    </table>
+                    <h2>학력</h2>
+                    <table border="1">
+                        <tr><th>고등학교</th><th>계열</th><th>입학일</th><th>졸업일</th></tr>
+                        <tr><td>백양고등학교</td><td>인문계(이과)</td><td>2010.03.02</td><td>2013.02.07</td></tr>
+                        <tr><th>대학교</th><th>전공</th><th>입학일</th><th>졸업일</th></tr>
+                        <tr><td>서울과학기술대학교</td><td>전자IT미디어공학과</td><td>2014.03.03</td><td>2021.02.24</td></tr>
+                    </table>
+                    <p><a href="https://www.gov.kr/mw/EgovPageLink.do?link=minwon/AA040_std_form">고등학교 졸업증명서 출력</a></p>
+                    <p><a href="https://www.webminwon.com/#reload">대학교 졸업증명서 출력</a></p>
                     <hr>
                     <h2>관심 기술 스택</h2>
                     <ul>
@@ -79,17 +93,6 @@
                         <li>HTML/CSS/Javascript</li>
                         <li>Android</li>
                     </ul>
-                    <h2>학력</h2>
-                    <table border="1">
-                        <tr><th>고등학교</th><th>계열</th></tr>
-                        <tr><td>백양고등학교</td><td>인문계(이과)</td></tr>
-                        <tr><th>대학교</th><th>전공</th></tr>
-                        <tr><td>서울과학기술대학교</td><td>전자IT미디어공학과</td></tr>
-                    </table>
-                    <p><strong>나이: </strong>30살</p>
-                    <p><strong>주소: </strong>서울</p>
-                    <p><strong>하는 일: </strong>직장인</p>
-                    <hr>
                     <h2>🎯 나의 관심사</h2>
                     <ul>
                         <li>프로그래밍</li>
@@ -112,9 +115,19 @@
                 `;
             }
         }
+        function getAge(){
+            let birthday = new Date('1994-06-19');
+            let today = new Date();
+            let diffTime = today.getTime() - birthday.getTime()
+            return Math.floor(diffTime/(365*1000*60*60*24));
+        }
 
         // 페이지 로딩 시 기본 콘텐츠 표시
-        window.onload = () => showContent('home');
+        window.onload = function()
+        {
+            showContent('home');
+            document.getElementById("age").textContent = getAge();
+        };
     </script>
 </body>
 </html>
