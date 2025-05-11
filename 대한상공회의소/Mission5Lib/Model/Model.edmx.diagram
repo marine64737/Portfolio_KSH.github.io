@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="941eba1008774887acca0dc5803fbe13" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Book" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="LibraryModel.BookCopy" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="LibraryModel.CheckOut" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="LibraryModel.Librarian" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="LibraryModel.Member" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="LibraryModel.Rule" Width="1.5" PointX="5.75" PointY="5.75" />
+        <AssociationConnector Association="LibraryModel.FK_BookCopy_Book" />
+        <AssociationConnector Association="LibraryModel.FK_CheckOut_BookCopy" />
+        <AssociationConnector Association="LibraryModel.FK_CheckOut_Librarian" />
+        <AssociationConnector Association="LibraryModel.FK_CheckOut_Member" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
