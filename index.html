@@ -66,9 +66,9 @@
                 content.innerHTML = `
                     <h1>인적사항</h1>
                     <div class="profile">
-                        <img src="김상호반명함.jpg" alt="내 사진">
+                        <img src="Files/김상호반명함.jpg" alt="내 사진">
                     </div>
-                    <a href="김상호반명함(120x160).jpg" download>명함(120x160) 다운로드</a>
+                    <a href="Files/김상호반명함(120x160).jpg" download>명함(120x160) 다운로드</a>
                     <h2>이름</h2>
                     <table border="1">
                         <tr><th>한글</th><th>영어</th><th>한문</th></tr>
@@ -126,13 +126,9 @@
                         <li>HTML/CSS/Javascript</li>
                         <li>Android</li>
                     </ul>
-                    <h2>🎯 나의 관심사</h2>
-                    <ul>
-                        <li>프로그래밍</li>
-                        <li>산책</li>
-                        <li>책 읽기</li>
-                    </ul>
-                `;
+                    <li>IoT 융합 SW개발(IoT기반 스마트팩토리 SW개발 전문가 과정):
+                    <a href="Files/스마트 팩토리 Iot과정 프로젝트.pptx" download>포트폴리오 다운로드</a></li>
+                    `;
             } else if (page === "contact") {
                 content.innerHTML = `
                     <h2>Contact Us</h2>
@@ -146,12 +142,13 @@
             let diffTime = today.getTime() - birthday.getTime()
             return Math.floor(diffTime/(365*1000*60*60*24));
         }
-
         // 페이지 로딩 시 기본 콘텐츠 표시
+        
         window.onload = function()
         {
             showContent('info');
             document.getElementById("age").textContent = getAge();
+            
         };
     </script>
 </body>
