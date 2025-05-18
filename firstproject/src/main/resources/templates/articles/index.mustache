@@ -1,0 +1,25 @@
+{{>layouts/header}}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Modify</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#articleList}}
+        <tr>
+            <th><a href="articles/{{id}}">{{id}}</a></th>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+            <td><a href="articles/{{id}}_modify">수정</a></td>
+            <td><a href="articles/{{id}}_delete">삭제</a></td>
+        </tr>
+    {{/articleList}}
+    </tbody>
+</table>
+<a href="articles/new">Create Post</a>
+{{>layouts/footer}}
