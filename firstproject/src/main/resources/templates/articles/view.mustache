@@ -1,0 +1,21 @@
+{{>layouts/header}}
+{{#article}}
+<form class="container" action="/articles" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <h2>{{title}}</h2>
+    <br><br>
+    <h4>{{content}}</h4>
+    <br><br>
+    <div style="width:200px;float: right;">
+        <a href="/articles/{{id}}_modify"><input class="btn btn-primary" type="button" value="수정"></a>
+        <a href="/articles/{{id}}_delete"><input class="btn btn-primary" type="button" value="삭제" ></a>
+        <form action="/articles/{{id}}_delete" method="get"
+              onsubmit="return confirm('정말 삭제하시겠습니까?');">
+            <button class="btn btn-primary" type="submit">삭제</button>
+        </form>
+        <a href="/articles"><input class="btn btn-primary" type="button" value="목록"></a>
+    </div>
+    <br><br>
+</form>
+{{/article}}
+{{>layouts/footer}}

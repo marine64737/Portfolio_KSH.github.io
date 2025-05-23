@@ -1,0 +1,14 @@
+{{>layouts/header}}
+<form class="container" action="/articles/{id}_delete" method="get">
+<h2>삭제하시겠습니까</h2>
+    <br><br>
+    <input type="hidden" name="id" value={{article.id}}>
+    <input type="hidden" name="title" value={{article.title}}>
+    <input type="hidden" name="content" value={{article.content}}>
+    <div style="width:200px;float: right;">
+        <button type="submit" class="btn btn-primary">삭제</button>
+        <a href="/articles/{{article.id}}_view"><input class="btn btn-primary" type="button" value="취소"></a>
+    </div>
+    <br><br>
+</form>
+{{>layouts/footer}}

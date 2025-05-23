@@ -14,4 +14,7 @@ public class ArticleForm {
     public Article toEntity() {
         return new Article(null, title, content);
     }
+    public Article toModifiedEntity() {
+        return new Article(id, title, content);
+    }
 }

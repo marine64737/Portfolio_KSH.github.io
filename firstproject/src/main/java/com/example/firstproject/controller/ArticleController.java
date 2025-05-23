@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -63,13 +62,35 @@ public class ArticleController {
         //3. 뷰 페이지 반환하기
         return "articles/modify";
     }
-    @PostMapping("/articles")
-    public String modifyArticle(ArticleForm form, Model model){
-        Article article = form.toEntity();
-        Article saved = articleRepository.save(article);
-        Iterable<Article> articleEntityList = articleRepository.findAll();
-        model.addAttribute("articleList", articleEntityList);
-        return "articles/index";
+    @GetMapping("articles/{id}_view")
+    public String view(@PathVariable Long id, Model model){
+        //1. id를 조회해 데이터 가져오기
+        Article articleEntity = articleRepository.findById(id).orElse(null);
+        //2. 모델에 데이터 등록하기
+        model.addAttribute("article", articleEntity);
+        //3. 뷰 페이지 반환하기
+        return "articles/view";
+    }
+    @PostMapping("/articles/update")
+    public String updateArticle(ArticleForm form, Model model){
+        log.info(form.toString());
+        Article article = form.toModifiedEntity();
+        log.info(article.toString());
+        Article articleEntity = articleRepository.findById(article.getId()).orElse(null);
+        log.info(articleEntity.toString());
+        if (articleEntity != null) {
+            articleRepository.save(article);
+        }
+        return "redirect:/articles/"+articleEntity.getId()+"_view";
+    }
+    @GetMapping("/articles/{id}_delete")
+    public String deleteArticle(@PathVariable Long id){
+        Article articleEntity = articleRepository.findById(id).orElse(null);
+        log.info(articleEntity.toString());
+        if (articleEntity != null) {
+            articleRepository.delete(articleEntity);
+        }
+        return "redirect:/articles";
     }
     //View
     @GetMapping("/articles")

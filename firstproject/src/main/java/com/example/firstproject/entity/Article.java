@@ -22,6 +22,9 @@ public class Article {
     @Column
     private String content;
 
+    public Long getId(){
+        return this.id;
+    }
     public String getTitle(){
         return this.title;
     }
