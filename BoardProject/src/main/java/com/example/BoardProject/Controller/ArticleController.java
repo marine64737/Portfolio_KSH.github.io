@@ -2,7 +2,7 @@ package com.example.BoardProject.Controller;
 
 import com.example.BoardProject.DTO.ArticleForm;
 import com.example.BoardProject.Entity.Article;
-import com.example.BoardProject.Repository.BoardRepository;
+import com.example.BoardProject.Repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -18,10 +18,10 @@ import java.util.List;
 @Controller
 public class ArticleController {
     @Autowired
-    BoardRepository boardRepository;
+    ArticleRepository articleRepository;
     @GetMapping("/")
     public String index(Model model){
-        List<Article> articleList = boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        List<Article> articleList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("articleList", articleList);
         return "board/index";
     }
@@ -31,17 +31,17 @@ public class ArticleController {
     }
     @PostMapping("/")
     public String create(ArticleForm form, Model model){
-        Article board = form.toEntity();
+        Article board = Article.toEntity(form);
         log.info(board.toString());
-        Article saved = boardRepository.save(board);
+        Article saved = articleRepository.save(board);
         log.info(saved.toString());
-        List<Article> articleList = boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        List<Article> articleList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("articleList", articleList);
         return "board/index";
     }
     @GetMapping("/board/{id}/view")
     public String view(@PathVariable Long id, Model model){
-        Article board = boardRepository.findById(id).orElse(null);
+        Article board = articleRepository.findById(id).orElse(null);
         log.info(board.toString());
         Model saved = model.addAttribute("post", board);
         log.info(saved.toString());
@@ -49,7 +49,7 @@ public class ArticleController {
     }
     @GetMapping("/board/{id}/modify")
     public String modify(@PathVariable Long id, Model model){
-        Article board = boardRepository.findById(id).orElse(null);
+        Article board = articleRepository.findById(id).orElse(null);
         log.info(board.toString());
         Model saved = model.addAttribute("post", board);
         log.info(saved.toString());
@@ -57,16 +57,16 @@ public class ArticleController {
     }
     @PostMapping("/board/{id}/view")
     public String modified(ArticleForm form, Model model){
-        Article article = form.toEntity();
+        Article article = Article.toEntity(form);
         log.info(article.toString());
-        Article saved = boardRepository.save(article);
+        Article saved = articleRepository.save(article);
         log.info(saved.toString());
         Model savedModel = model.addAttribute("post", saved);
         return "board/view";
     }
     @PostMapping("/board/{id}/delete")
     public String delete(@PathVariable Long id){
-        boardRepository.deleteById(id);
+        articleRepository.deleteById(id);
         return "redirect:/";
     }
 }
