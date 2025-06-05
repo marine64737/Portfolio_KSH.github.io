@@ -22,22 +22,8 @@
            form.submit();
        }">삭제</a>
             <a class="btn btn-secondary" href="/" role="button">목록</a>
-            <table>
-            {{#commentList}}
-                <tr>
-                    <th scope="row" style="hidden">{{id}}</th>
-                    <td>{{comment}}</td>
-                    <td>{{commentdate}}</td>
-                </tr>
-            {{/commentList}}
-            </table>
-            <form action="/board/{{post.id}}/view" method="post">
-                <div class="mb-3">
-                    <input type=text" class="form-control" name="comment">
-                </div>
-                <button class="btn btn-primary" type="submit">댓글 작성</button>
-            </form>
         </div>
+        {{>comments/_comments}}
     </form>
 </div>
 <hr>

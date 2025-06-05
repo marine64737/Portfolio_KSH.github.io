@@ -33,13 +33,13 @@ public class CommentService {
     }
     public List<CommentForm> view(Long articleId){
         List<Comment> commentList = commentRepository.findByArticleId(articleId);
-        List<CommentForm> comments = new ArrayList<CommentForm>();
+        List<CommentForm> commentFormList = new ArrayList<CommentForm>();
         for (int i=0; i< commentList.size(); i++){
-            Comment c = commentList.get(i);
-            CommentForm f = CommentForm.createCommentForm(c);
-            comments.add(f);
+            Comment comment = commentList.get(i);
+            CommentForm form = CommentForm.createCommentForm(comment);
+            commentFormList.add(form);
         }
-        return comments;
+        return commentFormList;
     }
     @Transactional
     public CommentForm create(CommentForm form, Long articleId){
@@ -66,13 +66,25 @@ public class CommentService {
         commentRepository.delete(comment);
         return comment;
     }
-    public List<Comment> viewByArticleId(Long id){
-        List<Comment> commentList = commentRepository.findByArticleId(id);
-        return commentList;
+    public List<CommentForm> viewByArticleId(Long articleId){
+        List<Comment> commentList = commentRepository.findByArticleId(articleId);
+        List<CommentForm> commentFormList = new ArrayList<CommentForm>();
+        for (int i=0; i< commentList.size(); i++){
+            Comment comment = commentList.get(i);
+            CommentForm form = CommentForm.createCommentForm(comment);
+            commentFormList.add(form);
+        }
+        return commentFormList;
     }
-    public List<Comment> viewByNickname(String nickname){
+    public List<CommentForm> viewByNickname(String nickname){
         List<Comment> commentList = commentRepository.findByNickname(nickname);
-        return commentList;
+        List<CommentForm> commentFormList = new ArrayList<CommentForm>();
+        for (int i=0; i< commentList.size(); i++){
+            Comment comment = commentList.get(i);
+            CommentForm form = CommentForm.createCommentForm(comment);
+            commentFormList.add(form);
+        }
+        return commentFormList;
     }
 
 }

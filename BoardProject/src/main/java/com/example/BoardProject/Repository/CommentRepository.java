@@ -1,5 +1,6 @@
 package com.example.BoardProject.Repository;
 
+import com.example.BoardProject.DTO.CommentForm;
 import com.example.BoardProject.Entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

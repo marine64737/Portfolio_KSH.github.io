@@ -1,8 +1,10 @@
 package com.example.BoardProject.Controller;
 
 import com.example.BoardProject.DTO.ArticleForm;
+import com.example.BoardProject.DTO.CommentForm;
 import com.example.BoardProject.Entity.Article;
 import com.example.BoardProject.Repository.ArticleRepository;
+import com.example.BoardProject.Service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -19,6 +21,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     ArticleRepository articleRepository;
+    @Autowired
+    CommentService commentService;
     @GetMapping("/")
     public String index(Model model){
         List<Article> articleList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -42,25 +46,21 @@ public class ArticleController {
     @GetMapping("/board/{id}/view")
     public String view(@PathVariable Long id, Model model){
         Article board = articleRepository.findById(id).orElse(null);
-        log.info(board.toString());
-        Model saved = model.addAttribute("post", board);
-        log.info(saved.toString());
+        List<CommentForm> commentForms = commentService.viewByArticleId(id);
+        model.addAttribute("post", board);
+        model.addAttribute("commentForms", commentForms);
         return "board/view";
     }
     @GetMapping("/board/{id}/modify")
     public String modify(@PathVariable Long id, Model model){
         Article board = articleRepository.findById(id).orElse(null);
-        log.info(board.toString());
         Model saved = model.addAttribute("post", board);
-        log.info(saved.toString());
         return "board/modify";
     }
     @PostMapping("/board/{id}/view")
     public String modified(ArticleForm form, Model model){
         Article article = Article.toEntity(form);
-        log.info(article.toString());
         Article saved = articleRepository.save(article);
-        log.info(saved.toString());
         Model savedModel = model.addAttribute("post", saved);
         return "board/view";
     }

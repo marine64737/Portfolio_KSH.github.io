@@ -1,16 +1,10 @@
 package com.example.BoardProject.DTO;
 
-import com.example.BoardProject.Entity.Article;
 import com.example.BoardProject.Entity.Comment;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +15,7 @@ public class CommentForm {
     private String nickname;
     private String comment;
     private String commentdate;
-    private Long articleId;
+    private Long article_id;
 
     public static CommentForm createCommentForm(Comment comment){
         return new CommentForm(

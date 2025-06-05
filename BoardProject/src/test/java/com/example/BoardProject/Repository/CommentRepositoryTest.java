@@ -1,5 +1,6 @@
 package com.example.BoardProject.Repository;
 
+import com.example.BoardProject.DTO.CommentForm;
 import com.example.BoardProject.Entity.Article;
 import com.example.BoardProject.Entity.Comment;
 import org.junit.jupiter.api.DisplayName;
@@ -36,29 +37,29 @@ class CommentRepositoryTest {
         clock = now.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
         Comment c = new Comment(3L, "Choi", "쇼생크 탈출", clock, article);
         List<Comment> expected = Arrays.asList(a, b, c);
-        List<Comment> commentList = commentRepository.findByArticleId(4L);
-        assertEquals(expected.toString(), commentList.toString());
+        List<CommentForm> commentFormList = commentRepository.findByArticleId(4L);
+        assertEquals(expected.toString(), commentFormList.toString());
     }
     @Test
     @DisplayName("ArticleId Test Fail 1")
     void findByArticleId_2() {
         List<Comment> expected = new ArrayList<>();
-        List<Comment> commentList = commentRepository.findByArticleId(9L);
-        assertEquals(expected, commentList);
+        List<CommentForm> commentFormList = commentRepository.findByArticleId(9L);
+        assertEquals(expected, commentFormList);
     }
     @Test
     @DisplayName("ArticleId Test Fail 2")
     void findByArticleId_3() {
         List<Comment> expected = new ArrayList<>();
-        List<Comment> commentList = commentRepository.findByArticleId(999L);
-        assertEquals(expected, commentList);
+        List<CommentForm> commentFormList = commentRepository.findByArticleId(999L);
+        assertEquals(expected, commentFormList);
     }
     @Test
     @DisplayName("ArticleId Test Fail 3")
     void findByArticleId_4() {
         List<Comment> expected = new ArrayList<>();
-        List<Comment> commentList = commentRepository.findByArticleId(-1L);
-        assertEquals(expected, commentList);
+        List<CommentForm> commentFormList = commentRepository.findByArticleId(-1L);
+        assertEquals(expected, commentFormList);
     }
 
     @Test
@@ -83,8 +84,8 @@ class CommentRepositoryTest {
         clock = now.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
         Comment c = new Comment(7L, "Park", "조깅", clock, thirdArticle);
         List<Comment> expected = Arrays.asList(a, b, c);
-        List<Comment> commentList = commentRepository.findByNickname("Park");
-        assertEquals(expected.toString(), commentList.toString());
+        List<CommentForm> commentFormList = commentRepository.findByNickname("Park");
+        assertEquals(expected.toString(), commentFormList.toString());
     }
     @Test
     @DisplayName("Nickname Test Success 2")
@@ -108,21 +109,21 @@ class CommentRepositoryTest {
         clock = now.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
         Comment c = new Comment(8L, "Kim", "유튜브 시청", clock, thirdArticle);
         List<Comment> expected = Arrays.asList(a, b, c);
-        List<Comment> commentList = commentRepository.findByNickname("Kim");
-        assertEquals(expected.toString(), commentList.toString());
+        List<CommentForm> commentFormList = commentRepository.findByNickname("Kim");
+        assertEquals(expected.toString(), commentFormList.toString());
     }
     @Test
     @DisplayName("Nickname Test Fail 1")
     void findByNickname_3() {
         List<Comment> expected = new ArrayList<>();
-        List<Comment> commentList = commentRepository.findByNickname(null);
-        assertEquals(expected.toString(), commentList.toString());
+        List<CommentForm> commentFormList = commentRepository.findByNickname(null);
+        assertEquals(expected.toString(), commentFormList.toString());
     }
     @Test
     @DisplayName("Nickname Test Fail 2")
     void findByNickname_4() {
         List<Comment> expected = new ArrayList<>();
-        List<Comment> commentList = commentRepository.findByNickname("");
-        assertEquals(expected.toString(), commentList.toString());
+        List<CommentForm> commentFormList = commentRepository.findByNickname("");
+        assertEquals(expected.toString(), commentFormList.toString());
     }
 }
